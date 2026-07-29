@@ -39,15 +39,28 @@ sudo reboot
 
 ### 3. Install development tools
 
-Reconnect after reboot, then install Python toolchain:
+After reboot, install the toolchain:
 
 ```bash
 sudo apt install -y \
   git \
+  build-essential \
+  libcap-dev \
+  pipx \
   python3 \
   python3-venv \
   python3-pip \
-  python3-gpiozero
+  python3-gpiozero \
+  python3-dev \
+  python3-libcamera \
+  python3-picamera2
+```
+
+Install Poetry through `pipx`:
+
+```bash
+pipx ensurepath
+pipx install poetry
 ```
 
 ### 4. Generate an SSH key
@@ -85,20 +98,7 @@ Replace `USERNAME` with your GitHub username.
 From the project directory, create a virtual environment:
 
 ```bash
-python3 -m venv .venv
-```
-
-Activate it:
-
-```bash
-source .venv/bin/activate
-```
-
-Install project dependencies from `requirements.txt`:
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+poetry install -vvv
 ```
 
 ## Raspberry Pi Camera Module 3 Wide
