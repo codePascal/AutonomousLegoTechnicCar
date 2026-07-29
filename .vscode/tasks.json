@@ -2,66 +2,154 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Python: Format",
+            "label": "Test: Unit tests",
             "type": "shell",
-            "command": "poetry run ruff format .",
-            "group": "build",
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared",
-                "clear": true
-            }
-        },
-        {
-            "label": "Python: Lint",
-            "type": "shell",
-            "command": "poetry run ruff check .",
-            "group": "test",
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared",
-                "clear": true
-            }
-        },
-        {
-            "label": "Python: Lint and Fix",
-            "type": "shell",
-            "command": "poetry run ruff check --fix . && poetry run ruff format .",
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared",
-                "clear": true
-            }
-        },
-        {
-            "label": "Python: Check Formatting",
-            "type": "shell",
-            "command": "poetry run ruff format --check . && poetry run ruff check .",
-            "group": "test",
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared",
-                "clear": true
-            }
-        },
-        {
-            "label": "Python: Run Tests",
-            "type": "shell",
-            "command": "poetry run pytest",
+            "command": "poetry",
+            "args": [
+                "run",
+                "pytest",
+                "-m",
+                "not hardware and not integration"
+            ],
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared",
-                "clear": true
-            }
+            "problemMatcher": []
+        },
+        {
+            "label": "Test: Integration tests",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "pytest",
+                "-m",
+                "integration and not hardware",
+                "-s"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Test: Camera hardware",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "pytest",
+                "-m",
+                "hardware",
+                "-s"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Test: All tests",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "pytest"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Test: Coverage",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "pytest",
+                "-m",
+                "not hardware",
+                "--cov=src",
+                "--cov-branch",
+                "--cov-report=term-missing",
+                "--cov-report=html"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint: Ruff check",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "ruff",
+                "check",
+                "src",
+                "tests"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint: Ruff fix",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "ruff",
+                "check",
+                "--fix",
+                "src",
+                "tests"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Format: Ruff",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "ruff",
+                "format",
+                "src",
+                "tests"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Format: Ruff check",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "ruff",
+                "format",
+                "--check",
+                "src",
+                "tests"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Type check: mypy",
+            "type": "shell",
+            "command": "poetry",
+            "args": [
+                "run",
+                "mypy"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Quality: All checks",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "Format: Ruff check",
+                "Lint: Ruff check",
+                "Type check: mypy",
+                "Test: Unit tests"
+            ],
+            "group": "build",
+            "problemMatcher": []
         }
     ]
 }
