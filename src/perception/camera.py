@@ -8,11 +8,11 @@ CSI camera port.
 import time
 
 import numpy as np
-from picamera2 import Picamera2
+from picamera2 import Picamera2  # type: ignore[import-not-found]
 
 
 class Camera:
-    def __init__(self, size=(640, 480), fps=30):
+    def __init__(self, size: tuple[int, int] = (640, 480), fps: int = 30) -> None:
         self.cam = Picamera2()
 
         cfg = self.cam.create_video_configuration(
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     num_frames = 10
     t0 = time.time()
     for _ in range(num_frames):
-        _ = cam.read()
+        _, _ = cam.read()  # type: ignore[assignment]
     t1 = time.time()
     fps = num_frames / (t1 - t0)
     print(f"Estimated FPS: {fps:.2f}")
