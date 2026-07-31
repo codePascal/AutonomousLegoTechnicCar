@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "autonomouslegotechniccar"
+version = "0.1.0"
+description = "A Python project to enable autonomous driving on a LEGO Technic car"
+authors = ["Pascal Müller <mup0117@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+numpy = "^2.5.1"
+pillow = "^12.3.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.1.1"
+pytest-cov = "^7.1.0"
+mypy = "^2.3.0"
+ruff = ">=0.16.0,<0.17.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "-ra",
+    "--strict-markers",
+]
+markers = [
+    "hardware: tests that require Raspberry Pi hardware",
+    "integration: integration tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 70
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "B011",
+]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

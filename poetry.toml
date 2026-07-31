@@ -1,0 +1,12 @@
+[virtualenvs]
+in-project = true
+
+[virtualenvs.options]
+# Let Poetry access system Python packages, e.g. libcamera and
+# picamera2.
+system-site-packages = true
+
+[keyring]
+# When installing only packages from public PyPi, disable Poetry's 
+# keyring integration.
+enabled = false
