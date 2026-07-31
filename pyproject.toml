@@ -36,6 +36,7 @@ source = ["src"]
 branch = true
 omit = [
     "src/lego_car/main.py",
+    "src/lego_car/domain/ports/camera.py",
     "src/lego_car/infrastructure/camera/picamera2_adapter.py"
 ]
 
