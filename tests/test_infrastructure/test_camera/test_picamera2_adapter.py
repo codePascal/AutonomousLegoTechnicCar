@@ -8,6 +8,8 @@ import pytest
 
 from lego_car.infrastructure.camera.picamera2_adapter import Picamera2Adapter
 
+pytestmark = pytest.mark.hardware
+
 
 @pytest.fixture
 def picamera2_mock() -> Generator[MagicMock, None, None]:
