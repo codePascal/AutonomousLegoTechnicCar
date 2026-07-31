@@ -4,7 +4,7 @@ import time
 from typing import Any
 
 import numpy as np
-from picamera2 import Picamera2  # type: ignore[import-untyped]
+from picamera2 import Picamera2
 
 from lego_car.domain.models.camera_frame import CameraFrame
 from lego_car.domain.ports.camera import CameraPort
