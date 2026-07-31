@@ -1,7 +1,10 @@
 [tool.poetry]
-name = "autonomouslegotechniccar"
+name = "autonomous-lego-technic-car"
 version = "0.1.0"
 description = "A Python project to enable autonomous driving on a LEGO Technic car"
+packages = [
+    { include = "lego_car", from = "src" }
+]
 authors = ["Pascal Müller <mup0117@gmail.com>"]
 readme = "README.md"
 license = "MIT"
