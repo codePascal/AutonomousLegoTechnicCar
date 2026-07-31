@@ -6,9 +6,12 @@ from unittest.mock import MagicMock, patch
 import numpy as np
 import pytest
 
-from lego_car.infrastructure.camera.picamera2_adapter import Picamera2Adapter
-
+# Conditional module skip for hardware-dependent code.
 pytestmark = pytest.mark.hardware
+
+pytest.importorskip("picamera2")
+
+from lego_car.infrastructure.camera.picamera2_adapter import Picamera2Adapter  # noqa: E402
 
 
 @pytest.fixture
