@@ -104,3 +104,11 @@ poetry install -vvv
 ## Raspberry Pi Camera Module 3 Wide
 
 [Product link](https://www.pi-shop.ch/raspberry-pi-camera-3-wide)
+
+## Stepper Motor
+
+[Product link](https://www.adafruit.com/product/324)
+
+### HAT for Raspberry Pi
+
+[Product link](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi)
