@@ -111,4 +111,16 @@ poetry install -vvv
 
 ### HAT for Raspberry Pi
 
-[Product link](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi)
+[Product link](https://www.adafruit.com/product/2348)
+
+Follow the setup guide to properly install the HAT on your Raspberry Pi OS
+[here](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi)
+
+### Connecting the Motor to the HAT
+
+Follow the setup guide to connect the stepper motor to the HAT
+[here](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi/using-stepper-motors)
+
+TLDR; The stepper motor is a bipolar motor with two coils.
+The red and yellow cable connect to one coil and the green and grey to one:
+
